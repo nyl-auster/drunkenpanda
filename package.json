@@ -1,0 +1,60 @@
+{
+  "name": "drunken-panda",
+  "version": "0.0.0",
+  "description": "The drunken panda framework.",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nyl-auster/drunkenpanda"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/gulp server",
+    "test": "node_modules/.bin/gulp test",
+    "lint": "node_modules/.bin/gulp lint"
+  },
+  "precommit": [
+    "lint"
+  ],
+  "prepush": [
+    "test"
+  ],
+  "author": {
+    "name": "Samuel Hurel",
+    "email": "samuel.hurel@tabasko-lab.com",
+    "url": "http://www.tabasko-lab.com"
+  },
+  "contributors": [
+    {
+      "name": "Samuel Hurel",
+      "email": "samuel.hurel@tabasko-lab.com",
+      "url": "http://www.tabasko-lab.com"
+    },
+    {
+      "name": "Yann Boisselier",
+      "email": "yannboisselier@gmail.com",
+      "url": "http://www.okc-design.fr"
+    }
+  ],
+  "license": "All rights reserved - Tabasko Lab / OKC",
+  "dependencies": {
+    "async": "^0.9.0",
+    "express": "^4.11.2",
+    "lodash": "^3.2.0",
+    "nconf": "^0.7.1",
+    "node-neo4j": "^2.0.3"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "gulp": "^3.8.11",
+    "gulp-bump": "^0.1.13",
+    "gulp-jshint": "^1.9.2",
+    "gulp-mocha": "^2.0.0",
+    "gulp-nodemon": "^1.0.5",
+    "jshint": "^2.6.0",
+    "jshint-stylish": "^1.0.0",
+    "mocha": "^2.1.0",
+    "precommit-hook": "^1.0.7",
+    "sinon": "^1.12.2",
+    "sinon-chai": "^2.6.0"
+  }
+}
