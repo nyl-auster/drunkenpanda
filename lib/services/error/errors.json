@@ -1,0 +1,12 @@
+{
+  "auth": {
+    "unknownUser": {
+      "message": "Invalid login",
+      "status": 401
+    },
+    "invalidPassword": {
+      "message": "Invalid password",
+      "status": 401
+    }
+  }
+}
