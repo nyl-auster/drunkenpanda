@@ -7,7 +7,7 @@
   },
   "auth": {
     "unknownUser": {
-      "message": "Invalid login.",
+      "message": "Unknown user.",
       "status": 401
     },
     "invalidPassword": {
