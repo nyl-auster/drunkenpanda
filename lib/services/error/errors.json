@@ -14,5 +14,19 @@
       "message": "Invalid password.",
       "status": 401
     }
+  },
+  "user": {
+    "notFound": {
+      "message": "User not found.",
+      "status": 404
+    },
+    "invalidEmail": {
+      "message": "Invalid email.",
+      "status": 400
+    },
+    "invalidPassword": {
+      "message": "Invalid password.",
+      "status": 400
+    }
   }
 }
