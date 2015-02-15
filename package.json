@@ -48,7 +48,8 @@
     "hiredis": "^0.2.0",
     "lodash": "^3.2.0",
     "nconf": "^0.7.1",
-    "node-neo4j": "^2.0.3",
+    "neo4j": "^2.0.0-alpha3",
+    "node-uuid": "^1.4.2",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "redis": "^0.12.1"

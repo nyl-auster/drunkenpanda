@@ -1,11 +1,17 @@
 {
+  "api": {
+    "resourceNotFound": {
+      "message": "Resource not found.",
+      "status": 404
+    }
+  },
   "auth": {
     "unknownUser": {
-      "message": "Invalid login",
+      "message": "Invalid login.",
       "status": 401
     },
     "invalidPassword": {
-      "message": "Invalid password",
+      "message": "Invalid password.",
       "status": 401
     }
   }
