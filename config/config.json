@@ -8,5 +8,17 @@
       "hostname": "localhost",
       "port": 7474
     }
+  },
+  "redis": {
+    "server": {
+      "host": "localhost",
+      "port": 6379
+    }
+  },
+  "session": {
+    "secret": "∿ ƉƦǚɳƘƎɲ ǷāŉƊḀ ♥ ∿",
+    "redis": {
+      "db": 10
+    }
   }
 }

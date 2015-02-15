@@ -10,7 +10,8 @@ gulp.task('server', function () {
   require('gulp-nodemon')({
     script: 'lib/index',
     watch: [
-      'config/**/*.json',
+      'config/config.json',
+      'config/config.' + process.env.NODE_ENV + '.json',
       'lib/**/*.js'
     ]
   });
