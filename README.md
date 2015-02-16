@@ -13,9 +13,9 @@ cd drunkenpanda
 npm i
 ```
 
-### install neo4j (as root)
+### install neo4j 
 
-#### Debian
+#### Debian (as root)
 ```sh
 wget -O - http://debian.neo4j.org/neotechnology.gpg.key| apt-key add -
 echo 'deb http://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list
