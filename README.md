@@ -25,7 +25,7 @@ aptitude install neo4j -y
 
 #### Mac osx
 ```sh
-Mac: brew install neo4j
+brew install neo4j
 ```
 
 ###install redis
@@ -57,6 +57,6 @@ npm start
 ### servers default urls
 
 * drukenpanda http server : localhost:3333
-* neo4js : localhost:7474
-* neo4js admin : localhost:7474/browser
+* neo4j : localhost:7474
+* neo4j admin : localhost:7474/browser
 
