@@ -15,7 +15,7 @@ npm i
 
 ### install neo4j (as root)
 
-#### debian
+#### Debian
 ```sh
 wget -O - http://debian.neo4j.org/neotechnology.gpg.key| apt-key add -
 echo 'deb http://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list
@@ -23,21 +23,29 @@ aptitude update -y
 aptitude install neo4j -y
 ```
 
-#### mac osx
+#### Mac osx
 ```sh
 Mac: brew install neo4js
 ```
 
 ###install redis
 
-#### mac
+#### Debian
+
+TODO
+
+#### Mac osx
 
 ```sh
 brew install redis
 ```
-## start drunken panda server
+## Start drunken panda server
 
-### start redis-server and nodejs http server
+### launch redis-server, neo4j and nodejs http server
+
+#### Debian
+
+TODO
 
 #### Mac
 ```sh
