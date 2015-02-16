@@ -37,13 +37,18 @@ brew install redis
 ```
 ## start drunken panda server
 
-### Mac
+### start redis-server and nodejs http server
+
+#### Mac
 ```sh
 redis-server
 cd drunkenpanda
 npm start
 ```
 
-* drunkenpanda server : localhost:3333
-* neo4js admin : localhost:7474
+### servers default urls
+
+* drukenpanda http server : localhost:3333
+* neo4js : localhost:7474
+* neo4js admin : localhost:7474/browser
 
