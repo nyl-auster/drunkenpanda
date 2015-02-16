@@ -51,6 +51,9 @@ TODO
 ```sh
 redis-server
 cd drunkenpanda
+# launch server using development config
+NODE_ENV=development npm start
+# launch server using prod config
 npm start
 ```
 
