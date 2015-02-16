@@ -25,7 +25,7 @@ aptitude install neo4j -y
 
 #### Mac osx
 ```sh
-Mac: brew install neo4js
+Mac: brew install neo4j
 ```
 
 ###install redis
