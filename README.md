@@ -6,8 +6,8 @@ java >= 1.7.x (pour neo4js)
 
 ## Install
 
-```sh
 ### get Drunken Panda
+```sh
 git clone git@github.com:nyl-auster/drunkenpanda.git
 cd drunkenpanda
 npm i
