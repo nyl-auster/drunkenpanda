@@ -1,0 +1,9 @@
+{
+  "neo4j": {
+    "server": {
+      "protocol": "http",
+      "hostname": "localhost",
+      "port": 7373
+    }
+  }
+}

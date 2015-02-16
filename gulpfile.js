@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var runSequence = require('run-sequence');
 
 /**
  * Run server.
@@ -38,18 +39,35 @@ gulp.task('lint', function() {
  * Run tests.
  */
 
-gulp.task('test', function() {
+gulp.task('test:db:start', function (done) {
+  exec('./node_modules/.bin/neo4j-test -r', done);
+});
+
+gulp.task('test:db:stop', function (done) {
+  exec('./node_modules/.bin/neo4j-test -k', done);
+});
+
+gulp.task('test:run', function() {
   return gulp.src('test/**/*.js')
   .pipe(require('gulp-mocha')({
     reporter: 'spec'
   }));
 });
 
-gulp.task('test:watch', function() {
+gulp.task('test', function (done) {
+  runSequence(
+    'test:db:start',
+    'test:run',
+    'test:db:stop',
+    done
+  );
+});
+
+gulp.task('test:watch', ['test:db:start'], function() {
   return gulp.watch([
     'lib/**/*.js',
     'test/**/*.js'
-  ], ['test']);
+  ], ['test:run']);
 });
 
 /**
@@ -73,3 +91,20 @@ gulp.task('bump:patch', function(){
   .pipe(require('gulp-bump')({type:'patch'}))
   .pipe(gulp.dest('./'));
 });
+
+/**
+ * Helper function to exec a command and show output.
+ */
+
+function exec(cmd, options, cb) {
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
+  }
+
+  require('child_process').exec(cmd, options, function (err, stdout, stderr) {
+    console.log(stdout);
+    console.error(stderr);
+    cb(err);
+  });
+}
