@@ -27,6 +27,10 @@
     "invalidPassword": {
       "message": "Invalid password.",
       "status": 400
+    },
+    "userAlreadyExists": {
+      "message": "User Already Exists",
+      "status": 400
     }
   }
 }
