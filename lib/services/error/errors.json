@@ -1,4 +1,10 @@
 {
+  "db": {
+    "cleanForbidden": {
+      "message": "Clearing the database is not allowed in this environment",
+      "status": 400
+    }
+  },
   "api": {
     "resourceNotFound": {
       "message": "Resource not found.",

@@ -3,6 +3,7 @@
     "port": 3333
   },
   "neo4j": {
+    "forbidClean": true,
     "server": {
       "protocol": "http",
       "hostname": "localhost",

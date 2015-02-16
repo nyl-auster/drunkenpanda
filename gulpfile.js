@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+var async = require('async');
 var gulp = require('gulp');
 var runSequence = require('run-sequence');
 
@@ -15,6 +17,30 @@ gulp.task('server', function () {
       'config/config.' + process.env.NODE_ENV + '.json',
       'lib/**/*.js'
     ]
+  });
+});
+
+/**
+ * Database tasks.
+ */
+
+gulp.task('db:clean', function (done) {
+  require('./lib/services/database').clean(done);
+});
+
+gulp.task('db:populate', ['db:clean'], function (done) {
+  var datas = require('./setup/database.json');
+  require('./lib/services/database').populate(datas, done);
+});
+
+gulp.task('db:populate:random', ['db:clean'], function (done) {
+  var getRandomUser = require('./setup/random/user');
+
+  async.parallel(_.flatten([
+    _.times(20, _.identity.bind(_, getRandomUser))
+  ]), function (err, datas) {
+    if (err) return done(err);
+    require('./lib/services/database').populate(datas, done);
   });
 });
 
@@ -48,7 +74,7 @@ gulp.task('test:db:stop', function (done) {
 });
 
 gulp.task('test:run', function() {
-  return gulp.src('test/**/*.js')
+  return gulp.src('test/unit/**/*.js')
   .pipe(require('gulp-mocha')({
     reporter: 'spec'
   }));
@@ -66,7 +92,8 @@ gulp.task('test', function (done) {
 gulp.task('test:watch', ['test:db:start'], function() {
   return gulp.watch([
     'lib/**/*.js',
-    'test/**/*.js'
+    'test/fixtures/datas.json',
+    'test/unit/**/*.js'
   ], ['test:run']);
 });
 

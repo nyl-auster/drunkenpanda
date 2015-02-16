@@ -1,5 +1,6 @@
 {
   "neo4j": {
+    "forbidClean": false,
     "server": {
       "protocol": "http",
       "hostname": "localhost",
