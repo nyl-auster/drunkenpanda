@@ -49,6 +49,7 @@ TODO
 
 #### Mac
 ```sh
+neo4j start
 redis-server
 cd drunkenpanda
 # launch server using development config
