@@ -86,7 +86,7 @@ gulp.task('test:db:stop', function (done) {
 gulp.task('test:run', function() {
   return gulp.src('test/unit/**/*.js')
   .pipe(require('gulp-mocha')({
-    reporter: 'spec',
+    reporter: 'nyan',
     growl: true
   }));
 });
@@ -95,7 +95,6 @@ gulp.task('test', function (done) {
   runSequence(
     'test:db:start',
     'test:run',
-    'test:db:stop',
     done
   );
 });
@@ -106,6 +105,24 @@ gulp.task('test:watch', ['test:db:start'], function() {
     'test/fixtures/datas.json',
     'test/unit/**/*.js'
   ], ['test:run']);
+});
+
+gulp.task('test:coverage', ['test:db:start'], function (done) {
+  var istanbul = require('gulp-istanbul');
+
+  gulp.src(['lib/**/*.js'])
+  .pipe(istanbul())
+  .pipe(istanbul.hookRequire())
+  .on('finish', function () {
+    gulp.src('test/unit/**/*.js')
+    .pipe(require('gulp-mocha')({
+      reporter: 'nyan'
+    }))
+    .pipe(istanbul.writeReports({
+      dir: './.coverage',
+    }))
+    .on('end', done);
+  });
 });
 
 /**
