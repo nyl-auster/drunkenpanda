@@ -1,9 +1,10 @@
-'use strict';
+/* jshint strict: false */
 
 // Force node environment
 process.env.NODE_ENV = 'test';
 
-var async = require('async');
+var path = require('path');
+LIB_PATH = path.resolve(__dirname, '..', '..', 'lib');
 
 /**
  * Global variables that might be used in tests.
@@ -21,11 +22,5 @@ chai.config.includeStack = true;
 chai.use(require('sinon-chai'));
 
 beforeEach(function (done) {
-  var dbService = require('../../lib/services/database');
-  var datas = require('../fixtures/database.json');
-
-  async.series([
-    dbService.clean,
-    async.apply(dbService.populate, datas)
-  ], done);
+  require(LIB_PATH + '/services/database').clean(done);
 });

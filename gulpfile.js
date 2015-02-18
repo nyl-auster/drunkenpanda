@@ -30,18 +30,20 @@ gulp.task('db:clean', function (done) {
 
 gulp.task('db:populate', ['db:clean'], function (done) {
   var datas = require('./setup/database.json');
-  require('./lib/services/database').populate(datas, done);
+
+  async.parallel(_.map(datas, function (modelDatas, modelName) {
+    return function (callback) {
+      async.each(modelDatas, function (modelData, next) {
+        require('./lib/models/' + modelName).save(modelData, next);
+      }, callback);
+    };
+  }), done);
 });
 
 gulp.task('db:populate:random', ['db:clean'], function (done) {
-  var getRandomUser = require('./setup/random/user');
-
   async.parallel(_.flatten([
-    _.times(20, _.identity.bind(_, getRandomUser))
-  ]), function (err, datas) {
-    if (err) return done(err);
-    require('./lib/services/database').populate(datas, done);
-  });
+    async.apply(require('./setup/random/users'), 100)
+  ]), done);
 });
 
 /**
@@ -59,6 +61,14 @@ gulp.task('lint', function() {
   .pipe(jshint())
   .pipe(jshint.reporter('jshint-stylish'))
   .pipe(jshint.reporter('fail'));
+});
+
+gulp.task('lint:watch', function() {
+  return gulp.watch([
+    './gulpfile.js',
+    './lib/**/*.js',
+    './test/**/*.js'
+  ], ['lint']);
 });
 
 /**
