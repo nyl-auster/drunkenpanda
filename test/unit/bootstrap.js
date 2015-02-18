@@ -21,6 +21,4 @@ global.expect = chai.expect;
 chai.config.includeStack = true;
 chai.use(require('sinon-chai'));
 
-beforeEach(function (done) {
-  require(LIB_PATH + '/services/database').clean(done);
-});
+afterEach(require(LIB_PATH + '/services/database').clean);
