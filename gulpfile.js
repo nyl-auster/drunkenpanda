@@ -86,7 +86,8 @@ gulp.task('test:db:stop', function (done) {
 gulp.task('test:run', function() {
   return gulp.src('test/unit/**/*.js')
   .pipe(require('gulp-mocha')({
-    reporter: 'spec'
+    reporter: 'spec',
+    growl: true
   }));
 });
 
