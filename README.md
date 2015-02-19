@@ -64,3 +64,11 @@ npm start
 * neo4j : localhost:7474
 * neo4j admin : localhost:7474/browser
 
+## Troubleshooting 
+
+If something seems to go wrong :
+* Have you run npm install ?
+* Check nodejs server is running and listening on an open port
+* Check neo4js is running and listening on an open port
+* Check redis server is running and listening on an open port
+
