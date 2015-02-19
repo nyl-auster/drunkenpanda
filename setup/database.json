@@ -3,12 +3,12 @@
     {
       "name": "Samuel Hurel",
       "email": "samuel.hurel@tabasko-lab.com",
-      "password": "2a$10$xYXCoQkRehXia1yUKZwcb.7O0DMB.vYWhdAUFg5fEESZMEfGPm6VW"
+      "password": "hello"
     },
     {
       "name": "Yann Boisselier",
       "email": "yann.boisselier@gmail.com",
-      "password": "2a$10$xYXCoQkRehXia1yUKZwcb.7O0DMB.vYWhdAUFg5fEESZMEfGPm6VW"
+      "password": "hello"
     }
   ]
 }
