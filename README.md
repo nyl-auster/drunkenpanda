@@ -1,6 +1,6 @@
 # The drunken panda framework
 
-## requirements
+## Requirements
 
 * java >= 1.7.x
 * nodejs
@@ -9,14 +9,14 @@
 
 ## Install
 
-### get Drunken Panda
+### Get Drunken Panda
 ```sh
 git clone git@github.com:nyl-auster/drunkenpanda.git
 cd drunkenpanda
 npm i
 ```
 
-### install neo4j 
+### Install neo4j 
 
 #### Debian (as root)
 ```sh
@@ -31,7 +31,7 @@ aptitude install neo4j -y
 brew install neo4j
 ```
 
-###install redis
+### Install redis
 
 #### Debian
 
@@ -47,7 +47,7 @@ brew install redis
 
 ## Start drunken panda server
 
-### launch redis-server and neo4j
+### Launch redis-server and neo4j
 
 #### Debian
 
@@ -63,7 +63,7 @@ neo4j start
 redis-server
 ```
 
-### launch nodejs http server
+### Launch nodejs http server
 
 ```sh
 cd drunkenpanda
@@ -73,7 +73,7 @@ NODE_ENV=development npm start
 npm start
 ```
 
-### servers default urls
+### Servers default urls
 
 * drukenpanda http server : http://localhost:3333
 * neo4j : http://localhost:7474
