@@ -2,10 +2,10 @@
 
 ## requirements
 
-java >= 1.7.x (pour neo4js)
-nodejs
-neo4j
-redis
+* java >= 1.7.x
+* nodejs
+* neo4j
+* redis
 
 ## Install
 
