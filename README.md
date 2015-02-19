@@ -47,16 +47,25 @@ brew install redis
 
 ## Start drunken panda server
 
-### launch redis-server, neo4j and nodejs http server
+### launch redis-server and neo4j
 
 #### Debian
 
-TODO
+Redis and neo4j services are launched by default, but you still can :
+```sh
+sudo service redis-server [start|stop|restart]
+sudo service neo4j-service [start|stop|restart]
+```
 
 #### Mac
 ```sh
 neo4j start
 redis-server
+```
+
+### launch nodejs http server
+
+```sh
 cd drunkenpanda
 # launch server using development config
 NODE_ENV=development npm start
