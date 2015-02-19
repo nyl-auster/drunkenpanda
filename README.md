@@ -36,13 +36,16 @@ brew install neo4j
 
 #### Debian
 
-TODO
+```sh
+aptitude install redis-server
+```
 
 #### Mac osx
 
 ```sh
 brew install redis
 ```
+
 ## Start drunken panda server
 
 ### launch redis-server, neo4j and nodejs http server
