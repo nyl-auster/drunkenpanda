@@ -3,6 +3,10 @@
 ## requirements
 
 java >= 1.7.x (pour neo4js)
+nodejs
+neo4j
+redis
+gulp
 
 ## Install
 
