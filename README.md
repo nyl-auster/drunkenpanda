@@ -72,8 +72,8 @@ npm start
 
 If something seems to go wrong :
 * Have you run npm install ?
-* Do you need to run NODE_ENV=development npm start instead of npm install ? 
-* Check nodejs server is running and listening on an open port
-* Check neo4js is running and listening on an open port
-* Check redis server is running and listening on an open port
+* Do you need to run `NODE_ENV=development npm start` instead of `npm run` ? 
+* Check nodejs server is running and listening on an open port (default to `3333`)
+* Check neo4js is running and listening on an open port (default to `7474`)
+* Check redis server is running and listening on an open port (default to `6379`)
 
