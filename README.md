@@ -64,7 +64,7 @@ TODO
 
 ## Start drunken panda server
 
-### Launch redis-server and neo4j
+### Launch redis-server, neo4j and elasticsearch
 
 #### Debian
 
@@ -72,12 +72,14 @@ Redis and neo4j services are launched by default, but you still can :
 ```sh
 sudo service redis-server [start|stop|restart]
 sudo service neo4j-service [start|stop|restart]
+sudo service elasticsearch [start|stop|restart]
 ```
 
 #### Mac
 ```sh
 neo4j start
 redis-server
+TODO elasticsearch
 ```
 
 ### Launch nodejs http server
