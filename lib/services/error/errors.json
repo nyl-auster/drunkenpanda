@@ -20,5 +20,15 @@
       "message": "Invalid password.",
       "status": 401
     }
+  },
+  "user": {
+    "invalidPassword": {
+      "message": "Invalid password.",
+      "status": 400
+    },
+    "missingPasswordHash": {
+      "message": "Missing password hash. You must either set a `password` or a `passwordHash` key.",
+      "status": 400
+    }
   }
 }

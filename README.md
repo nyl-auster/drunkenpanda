@@ -17,7 +17,7 @@ cd drunkenpanda
 npm i
 ```
 
-### Install neo4j 
+### Install neo4j
 
 #### Debian
 ```sh
@@ -37,7 +37,7 @@ brew install neo4j
 #### Debian
 
 ```sh
-aptitude install redis-server
+sudo aptitude install redis-server
 ```
 
 #### Mac osx
@@ -46,7 +46,7 @@ aptitude install redis-server
 brew install redis
 ```
 
-### Install elasticsearch 
+### Install elasticsearch
 
 #### Debian
 ```sh
@@ -98,11 +98,11 @@ npm start
 * neo4j : http://localhost:7474
 * redis : localhost:6379
 
-## Troubleshooting 
+## Troubleshooting
 
 If something seems to go wrong :
 * Have you run npm install ?
-* Do you need to run `NODE_ENV=development npm start` instead of `npm run` ? 
+* Do you need to run `NODE_ENV=development npm start` instead of `npm run` ?
 * Check nodejs server is running and listening on an open port
 * Check neo4js is running and listening on an open port
 * Check redis server is running and listening on an open port

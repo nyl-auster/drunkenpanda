@@ -6,5 +6,11 @@
       "hostname": "localhost",
       "port": 7373
     }
+  },
+  "elasticsearch": {
+    "client": {
+      "log": "warning"
+    },
+    "index": "drunkenpanda-tests"
   }
 }

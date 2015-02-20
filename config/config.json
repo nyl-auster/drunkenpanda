@@ -19,6 +19,13 @@
       "port": 6379
     }
   },
+  "elasticsearch": {
+    "client": {
+      "host": "localhost:9200",
+      "log": "error"
+    },
+    "index": "drunkenpanda"
+  },
   "session": {
     "secret": "∿ ƉƦǚɳƘƎɲ ǷāŉƊḀ ♥ ∿",
     "redis": {
