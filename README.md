@@ -18,12 +18,12 @@ npm i
 
 ### Install neo4j 
 
-#### Debian (as root)
+#### Debian
 ```sh
-wget -O - http://debian.neo4j.org/neotechnology.gpg.key| apt-key add -
-echo 'deb http://debian.neo4j.org/repo stable/' > /etc/apt/sources.list.d/neo4j.list
-aptitude update -y
-aptitude install neo4j -y
+wget -O - http://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
+sudo sh -c 'echo "deb http://debian.neo4j.org/repo stable/" > /etc/apt/sources.list.d/neo4j.list'
+sudo aptitude update -y
+sudo aptitude install neo4j -y
 ```
 
 #### Mac osx
