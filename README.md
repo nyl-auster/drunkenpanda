@@ -6,6 +6,7 @@
 * [nodejs](//nodejs.org) / [io.js](//iojs.org)
 * [neo4j](//neo4j.com)
 * [redis](//redis.io)
+* [elasticsearch](//elasticsearch.org)
 
 ## Install
 
@@ -43,6 +44,22 @@ aptitude install redis-server
 
 ```sh
 brew install redis
+```
+
+### Install elasticsearch 
+
+#### Debian
+```sh
+wget -O - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo sh -c 'echo "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list'
+sudo aptitude update -y
+sudo aptitude install elasticsearch -y
+sudo update-rc.d elasticsearch defaults 95 10
+```
+
+#### Mac osx
+```sh
+TODO
 ```
 
 ## Start drunken panda server
