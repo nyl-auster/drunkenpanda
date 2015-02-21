@@ -23,8 +23,8 @@ npm i
 ```sh
 wget -O - http://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
 sudo sh -c 'echo "deb http://debian.neo4j.org/repo stable/" > /etc/apt/sources.list.d/neo4j.list'
-sudo aptitude update -y
-sudo aptitude install neo4j -y
+sudo apt-get update -y
+sudo apt-get install neo4j -y
 ```
 
 #### Mac osx
@@ -37,7 +37,7 @@ brew install neo4j
 #### Debian
 
 ```sh
-sudo aptitude install redis-server
+sudo apt-get install redis-server
 ```
 
 #### Mac osx
@@ -52,9 +52,11 @@ brew install redis
 ```sh
 wget -O - https://packages.elasticsearch.org/GPG-KEY-elasticsearch | sudo apt-key add -
 sudo sh -c 'echo "deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main" > /etc/apt/sources.list.d/elasticsearch.list'
-sudo aptitude update -y
-sudo aptitude install elasticsearch -y
+sudo apt-get update -y
+sudo apt-get install elasticsearch -y
 sudo update-rc.d elasticsearch defaults 95 10
+sudo systemctl daemon-reload
+sudo service elasticsearch start
 ```
 
 #### Mac osx

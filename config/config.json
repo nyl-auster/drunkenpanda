@@ -31,5 +31,17 @@
     "redis": {
       "db": 10
     }
+  },
+  "logger": {
+    "transports": {
+      "winston-elasticsearch": {
+        "level": "info",
+        "indexName": "drunkenpanda-logs",
+        "host": "localhost",
+        "port": "9200",
+        "handleExceptions": true,
+        "json": true
+      }
+    }
   }
 }
