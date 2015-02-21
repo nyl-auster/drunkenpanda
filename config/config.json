@@ -1,5 +1,7 @@
 {
   "server": {
+    "protocol": "http",
+    "hostname": "localhost",
     "port": 3333,
     "headers": {
       "x-powered-by": "Drunken Panda"
@@ -13,12 +15,6 @@
       "port": 7474
     }
   },
-  "redis": {
-    "server": {
-      "host": "localhost",
-      "port": 6379
-    }
-  },
   "elasticsearch": {
     "client": {
       "host": "localhost:9200",
@@ -29,6 +25,8 @@
   "session": {
     "secret": "∿ ƉƦǚɳƘƎɲ ǷāŉƊḀ ♥ ∿",
     "redis": {
+      "host": "localhost",
+      "port": 6379,
       "db": 10
     }
   },

@@ -12,5 +12,11 @@
       "log": "warning"
     },
     "index": "drunkenpanda-tests"
+  },
+  "session": {
+    "redis": {
+      "db": 100,
+      "unref": true
+    }
   }
 }
