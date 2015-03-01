@@ -19,8 +19,17 @@ describe('server.middlewares.auth', function () {
       passport.authenticate('local', function (err, user, info) {
         if (err) return next(err);
         if (!user) return next(info);
-        res.send();
+
+        req.login(user, function (err) {
+          if (err) return next(err);
+
+          res.send(user);
+        });
       })(req, res, next);
+    });
+
+    app.get('/protected', function (req, res) {
+      res.status(req.user ? 200 : 401).send();
     });
 
     User.save({
@@ -66,6 +75,40 @@ describe('server.middlewares.auth', function () {
       })
       .expect(401)
       .end(done);
+    });
+  });
+
+  describe('protected route', function () {
+    describe('without authenticated user', function () {
+      it('should reject request', function (done) {
+        request(app)
+        .get('/protected')
+        .expect(401)
+        .end(done);
+      });
+    });
+
+    describe('with authenticated user', function () {
+      var agent;
+      beforeEach(function (done) {
+        agent = request.agent(app);
+
+        agent
+        .post('/login')
+        .send({
+          email: 'test@example.com',
+          password: 'hello'
+        })
+        .expect(200)
+        .end(done);
+      });
+
+      it('should allow request', function (done) {
+        agent
+        .get('/protected')
+        .expect(200)
+        .end(done);
+      });
     });
   });
 });
