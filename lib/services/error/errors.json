@@ -1,4 +1,14 @@
 {
+  "http": {
+    "internalServerError": {
+      "message": "Internal server error.",
+      "status": 500
+    },
+    "notFound": {
+      "message": "Not found.",
+      "status": 404
+    }
+  },
   "db": {
     "cleanForbidden": {
       "message": "Clearing the database is not allowed in this environment",

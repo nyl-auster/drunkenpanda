@@ -3,10 +3,10 @@
 var express = require('express');
 var request = require('supertest');
 var passport = require('passport');
-var errorHandler = require('express-err');
 var LocalStrategy = require('passport-local').Strategy;
 var auth = require(LIB_PATH + '/server/routes/auth');
 var error = require(LIB_PATH + '/services/error');
+var errorHandler = require(LIB_PATH + '/server/middlewares/error-handler');
 
 describe('server.routes.auth', function () {
   var app;
@@ -47,8 +47,7 @@ describe('server.routes.auth', function () {
       app.use(passport.session());
 
       app.use(auth);
-
-      app.use(errorHandler());
+      app.use(errorHandler);
     });
 
     describe('#POST', function () {
@@ -67,7 +66,7 @@ describe('server.routes.auth', function () {
         request(app)
         .post('/login')
         .send({
-          email: 'wrong.user@example.com',
+          email: 'unknown.user@example.com',
           password: user.password
         })
         .expect(401, {
