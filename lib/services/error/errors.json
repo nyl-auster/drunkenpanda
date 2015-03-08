@@ -29,6 +29,10 @@
     "invalidPassword": {
       "message": "Invalid password.",
       "status": 401
+    },
+    "notLoggedIn": {
+      "message": "User not logged in.",
+      "status": 401
     }
   },
   "user": {
