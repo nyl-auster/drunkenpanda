@@ -47,7 +47,7 @@
   },
   "search": {
     "indexer": {
-      "invalidJson": {
+      "invalidJSON": {
         "message": "Malformed JSON.",
         "status": 500
       }

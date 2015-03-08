@@ -1,11 +1,19 @@
 'use strict';
 
 var _ = require('lodash');
-var User = require(LIB_PATH + '/models/user');
+var proxyquire = require('proxyquire');
 var error = require(LIB_PATH + '/services/error');
 
 describe('models.user', function () {
   var user;
+
+  var searchMock = {
+    indexModel: sinon.spy()
+  };
+
+  var User = proxyquire(LIB_PATH + '/models/user', {
+    '../services/search': searchMock
+  });
 
   beforeEach(function (done) {
     User.save({
@@ -20,6 +28,19 @@ describe('models.user', function () {
   });
 
   describe('#save', function () {
+    it('should index user', function (done) {
+      User.save({
+        name: 'Master of the pandas',
+        email: 'test-new@example.com',
+        password: 'hello'
+      }, function (err, res) {
+        if (err) return done(err);
+
+        expect(searchMock.indexModel).to.have.been.calledWithMatch(User, res);
+        done();
+      });
+    });
+
     describe('create', function () {
       it('should create a user', function (done) {
         User.save({
