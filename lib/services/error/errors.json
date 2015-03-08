@@ -40,5 +40,13 @@
       "message": "Missing password hash. You must either set a `password` or a `passwordHash` key.",
       "status": 400
     }
+  },
+  "search": {
+    "indexer": {
+      "invalidJson": {
+        "message": "Malformed JSON.",
+        "status": 500
+      }
+    }
   }
 }

@@ -1,9 +1,6 @@
 'use strict';
 
-var _ = require('lodash');
-var async = require('async');
 var gulp = require('gulp');
-var runSequence = require('run-sequence');
 
 /**
  * Run server.
@@ -29,28 +26,18 @@ gulp.task('db:clean', function (done) {
 });
 
 gulp.task('db:populate', ['db:clean'], function (done) {
-  var datas = require('./setup/database.json');
-
-  async.parallel(_.map(datas, function (modelDatas, modelName) {
-    return function (callback) {
-      async.each(modelDatas, function (modelData, next) {
-        require('./lib/models/' + modelName).save(modelData, next);
-      }, callback);
-    };
-  }), done);
+  require('child_process').fork('./setup').once('exit', done);
 });
 
 gulp.task('db:populate:random', ['db:clean'], function (done) {
-  async.parallel(_.flatten([
-    async.apply(require('./setup/random/users'), 100)
-  ]), done);
+  require('child_process').fork('./setup/random').once('exit', done);
 });
 
 /**
  * Lint JS files.
  */
 
-gulp.task('lint', function() {
+gulp.task('lint', function () {
   var jshint = require('gulp-jshint');
 
   return gulp.src([
@@ -63,7 +50,7 @@ gulp.task('lint', function() {
   .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('lint:watch', function() {
+gulp.task('lint:watch', function () {
   return gulp.watch([
     './gulpfile.js',
     './lib/**/*.js',
@@ -83,65 +70,48 @@ gulp.task('test:db:stop', function (done) {
   exec('./node_modules/.bin/neo4j-test -k', done);
 });
 
-gulp.task('test:run', function() {
+gulp.task('test', function () {
   return gulp.src('test/unit/**/*.js')
-  .pipe(require('gulp-mocha')({
+  .pipe(require('gulp-spawn-mocha')({
     reporter: 'nyan',
     growl: true
   }));
 });
 
-gulp.task('test', function (done) {
-  runSequence(
-    'test:db:start',
-    'test:run',
-    done
-  );
-});
-
-gulp.task('test:watch', ['test:db:start'], function() {
+gulp.task('test:watch', ['test:db:start'], function () {
   return gulp.watch([
     'lib/**/*.js',
-    'test/fixtures/datas.json',
     'test/unit/**/*.js'
-  ], ['test:run']);
+  ], ['test']);
 });
 
-gulp.task('test:coverage', ['test:db:start'], function (done) {
-  var istanbul = require('gulp-istanbul');
-
-  gulp.src(['lib/**/*.js'])
-  .pipe(istanbul())
-  .pipe(istanbul.hookRequire())
-  .on('finish', function () {
-    gulp.src('test/unit/**/*.js')
-    .pipe(require('gulp-mocha')({
-      reporter: 'nyan'
-    }))
-    .pipe(istanbul.writeReports({
-      dir: './.coverage',
-    }))
-    .on('end', done);
-  });
+gulp.task('test:coverage', ['test:db:start'], function () {
+  return gulp.src('test/unit/**/*.js')
+  .pipe(require('gulp-spawn-mocha')({
+    reporter: 'nyan',
+    istanbul: {
+      dir: './.coverage'
+    }
+  }));
 });
 
 /**
  * Bump version.
  */
 
-gulp.task('bump:major', function(){
+gulp.task('bump:major', function (){
   gulp.src(['./package.json'])
   .pipe(require('gulp-bump')({type:'major'}))
   .pipe(gulp.dest('./'));
 });
 
-gulp.task('bump:minor', function(){
+gulp.task('bump:minor', function (){
   gulp.src(['./package.json'])
   .pipe(require('gulp-bump')({type:'minor'}))
   .pipe(gulp.dest('./'));
 });
 
-gulp.task('bump:patch', function(){
+gulp.task('bump:patch', function (){
   gulp.src(['./package.json'])
   .pipe(require('gulp-bump')({type:'patch'}))
   .pipe(gulp.dest('./'));

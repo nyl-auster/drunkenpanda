@@ -15,6 +15,13 @@
       "port": 7474
     }
   },
+  "rabbitmq": {
+    "server": {
+      "protocol": "amqp",
+      "hostname": "localhost"
+    },
+    "encoding": "utf8"
+  },
   "elasticsearch": {
     "client": {
       "host": "localhost:9200",
